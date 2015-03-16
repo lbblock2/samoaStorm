@@ -1,0 +1,3 @@
+com/yahoo/labs/samoa/core/DoubleVectorTest.class
+com/yahoo/labs/samoa/streams/fs/HDFSFileStreamSourceTest.class
+com/yahoo/labs/samoa/streams/fs/LocalFileStreamSourceTest.class

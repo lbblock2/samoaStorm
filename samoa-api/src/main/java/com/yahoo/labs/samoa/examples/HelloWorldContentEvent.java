@@ -4,7 +4,7 @@ package com.yahoo.labs.samoa.examples;
  * #%L
  * SAMOA
  * %%
- * Copyright (C) 2013 - 2014 Yahoo! Inc.
+ * Copyright (C) 2013 - 2015 Yahoo! Inc.
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,16 +22,17 @@ package com.yahoo.labs.samoa.examples;
 
 import com.yahoo.labs.samoa.core.ContentEvent;
 
-/**
- * Example {@link ContentEvent} that contains a single integer.
+
+/*
+ * Sends messages (ContentEvent) that just contains an integer
  */
 public class HelloWorldContentEvent implements ContentEvent {
 
     private static final long serialVersionUID = -2406968925730298156L;
     private final boolean isLastEvent;
-    private final int helloWorldData;
+    private final String helloWorldData;
 
-    public HelloWorldContentEvent(int helloWorldData, boolean isLastEvent) {
+    public HelloWorldContentEvent(String helloWorldData, boolean isLastEvent) {
         this.isLastEvent = isLastEvent;
         this.helloWorldData = helloWorldData;
     }
@@ -40,7 +41,7 @@ public class HelloWorldContentEvent implements ContentEvent {
      * No-argument constructor for Kryo
      */
     public HelloWorldContentEvent() {
-    	this(0,false);
+    	this("no",false);
     }
 
     @Override
@@ -58,12 +59,12 @@ public class HelloWorldContentEvent implements ContentEvent {
         return isLastEvent;
     }
 
-    public int getHelloWorldData() {
+    public String getHelloWorldData() {
         return helloWorldData;
     }
 
     @Override
     public String toString() {
-        return "HelloWorldContentEvent [helloWorldData=" + helloWorldData + "]";
+        return helloWorldData;
     }
 }

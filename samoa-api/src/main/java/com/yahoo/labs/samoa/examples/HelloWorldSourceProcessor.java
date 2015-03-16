@@ -4,7 +4,7 @@ package com.yahoo.labs.samoa.examples;
  * #%L
  * SAMOA
  * %%
- * Copyright (C) 2013 - 2014 Yahoo! Inc.
+ * Copyright (C) 2013 - 2015 Yahoo! Inc.
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,22 +22,51 @@ package com.yahoo.labs.samoa.examples;
 
 import java.util.Random;
 
+import com.yahoo.labs.samoa.moa.cluster.Cluster; 
+
 import com.yahoo.labs.samoa.core.ContentEvent;
 import com.yahoo.labs.samoa.core.EntranceProcessor;
 import com.yahoo.labs.samoa.core.Processor;
 
-/**
- * Example {@link EntranceProcessor} that generates a stream of random integers.
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+
+/* 
+ * Generates a string of random integers
  */
 public class HelloWorldSourceProcessor implements EntranceProcessor {
 
     private static final long serialVersionUID = 6212296305865604747L;
     private Random rnd;
-    private final long maxInst;
+    private long maxInst;
     private long count;
+    private String filename;
+    private BufferedReader br;
+    //privste file? rechercher les fichiers sur Google pour Java
 
-    public HelloWorldSourceProcessor(long maxInst) {
-        this.maxInst = maxInst;
+    public HelloWorldSourceProcessor(String filename) { //met nom de ficiher ici en place de "long maxInst"
+        this.filename = filename;
+        try{
+            FileReader reader = new FileReader(filename);
+            
+            this.br = new BufferedReader(reader);
+            try {
+                String line = br.readLine();
+                System.out.println(line);
+                //long maxInst = Long.parseLong(line);
+                this.maxInst = maxInst;
+            }
+            catch (IOException exception) {
+                System.out.println("Erreur! " + exception.getMessage());
+            }
+        }
+        catch(FileNotFoundException exception)
+        {
+            System.out.println("problem fichier");
+        }
     }
 
     @Override
@@ -54,7 +83,8 @@ public class HelloWorldSourceProcessor implements EntranceProcessor {
     @Override
     public Processor newProcessor(Processor p) {
         HelloWorldSourceProcessor hwsp = (HelloWorldSourceProcessor) p;
-        return new HelloWorldSourceProcessor(hwsp.maxInst);
+        //return new HelloWorldSourceProcessor(hwsp.fileName);
+        return new HelloWorldSourceProcessor(hwsp.filename);
     }
 
     @Override
@@ -62,14 +92,24 @@ public class HelloWorldSourceProcessor implements EntranceProcessor {
     	return count >= maxInst;
     }
     
+    // continue jusqu'au méthode renvoie faux
     @Override
     public boolean hasNext() {
         return count < maxInst;
     }
 
+    //Does not run if hasNext() returns false
     @Override
     public ContentEvent nextEvent() {
         count++;
-        return new HelloWorldContentEvent(rnd.nextInt(), false);
+        String line=new String();
+        try {
+            line= this.br.readLine();
+        }
+       catch (IOException exception) {
+           System.out.println("Erreur! " + exception.getMessage());
+       }
+        
+        return new HelloWorldContentEvent(line, false);
     }
 }

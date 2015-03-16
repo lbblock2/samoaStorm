@@ -1,0 +1,14 @@
+com/yahoo/labs/samoa/instances/Instances.class
+com/yahoo/labs/samoa/instances/DenseInstance.class
+com/yahoo/labs/samoa/instances/InstanceInformation.class
+com/yahoo/labs/samoa/instances/InstancesHeader.class
+com/yahoo/labs/samoa/instances/InstanceData.class
+com/yahoo/labs/samoa/instances/DenseInstanceData.class
+com/yahoo/labs/samoa/instances/SparseInstanceData.class
+com/yahoo/labs/samoa/instances/SingleClassInstanceData.class
+com/yahoo/labs/samoa/instances/Attribute.class
+com/yahoo/labs/samoa/instances/SingleLabelInstance.class
+com/yahoo/labs/samoa/instances/Instance.class
+com/yahoo/labs/samoa/instances/Utils.class
+com/yahoo/labs/samoa/instances/ArffLoader.class
+com/yahoo/labs/samoa/instances/SparseInstance.class

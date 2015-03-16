@@ -1,0 +1,8 @@
+com/yahoo/labs/samoa/LocalDoTask.class
+com/yahoo/labs/samoa/topology/impl/SimpleStream.class
+com/yahoo/labs/samoa/topology/impl/SimpleComponentFactory.class
+com/yahoo/labs/samoa/topology/impl/SimpleProcessingItem.class
+com/yahoo/labs/samoa/topology/impl/SimpleStream$1.class
+com/yahoo/labs/samoa/topology/impl/SimpleEngine.class
+com/yahoo/labs/samoa/topology/impl/SimpleEntranceProcessingItem.class
+com/yahoo/labs/samoa/topology/impl/SimpleTopology.class
